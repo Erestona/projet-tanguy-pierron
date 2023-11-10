@@ -1,0 +1,6 @@
+<form (ngSubmit)="search()">
+    <input [(ngModel)]="criteria.price" name="price" placeholder="Price">
+    <input [(ngModel)]="criteria.category" name="category" placeholder="Category">
+    <button (click)="search()" type="submit">Rechercher</button>
+  </form>
+  
