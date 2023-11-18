@@ -9,6 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { LinksComponent } from './links/links.component';
 import { CartComponent } from './cart/cart.component';
+import { CartModule } from './cart/cart.module';
+import {NgxsModule} from '@ngxs/store';
+import {CartState} from '../shared/states/cart-state';
 
 const appRoutes : Routes= [
   {path : 'shop', component : ProductListComponent},
@@ -25,6 +28,8 @@ const appRoutes : Routes= [
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
+    NgxsModule.forRoot([CartState]),
+    CartModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
