@@ -1,1 +1,18 @@
-<p>cart works!</p>
+<h1>Panier</h1>
+
+
+<table>
+<tr>
+    <th> ID</th>
+    <th> Name</th>
+    <th> category</th>
+    <th> Price</th>
+</tr> 
+<tr *ngFor="let product of liste$ | async">
+    <td>{{ product.id }}</td>
+    <td>{{ product.name }}</td>
+    <td>{{ product.category }}</td>
+    <td>{{ product.price }}</td>
+    <td><button (click)="delProduct(product)">Supprimer du panier</button></td>
+</tr>
+</table>

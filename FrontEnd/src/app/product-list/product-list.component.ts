@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
     {
       if (product.id == id )
       {
-        //this.store.dispatch(new AddProduct(product));
+        this.store.dispatch(new AddProduct(product));
         
       }
     });
