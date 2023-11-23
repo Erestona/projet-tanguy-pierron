@@ -1,7 +1,7 @@
 import { Component , OnInit} from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Product } from 'src/shared/models/product';
-import { DelProduct } from 'src/shared/actions/cart-action';
+import { ClearCart, DelProduct } from 'src/shared/actions/cart-action';
 import { CartState } from 'src/shared/states/cart-state';
 import { Observable } from 'rxjs';
 
@@ -19,5 +19,9 @@ export class CartComponent implements OnInit{
 
   delProduct(p : Product): void{
     this.store.dispatch(new DelProduct(p));
+  }
+
+  clearCart(){
+    this.store.dispatch(new ClearCart());
   }
 }

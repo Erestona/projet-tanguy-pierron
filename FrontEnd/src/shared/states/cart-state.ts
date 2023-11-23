@@ -8,7 +8,7 @@ import {
 } from '@ngxs/store';
 
 import { CartStateModel } from './cart-state-model';
-import { AddProduct, DelProduct } from '../actions/cart-action';
+import { AddProduct, ClearCart, DelProduct } from '../actions/cart-action';
 
 @State<CartStateModel>({
     name: 'products',
@@ -57,5 +57,12 @@ export class CartState {
       products: updatedProducts,
     });
   }
+  }
+
+  @Action(ClearCart)
+  clear({ setState }: StateContext<CartStateModel>) {
+    setState({
+      products: [],
+    });
   }
 }
