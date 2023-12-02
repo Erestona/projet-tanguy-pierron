@@ -1,5 +1,6 @@
 import { Component, OnInit ,EventEmitter,Output} from '@angular/core';
 import { ProductServiceService } from 'src/product-service.service';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-product-search',
@@ -9,7 +10,7 @@ import { ProductServiceService } from 'src/product-service.service';
 export class ProductSearchComponent implements OnInit{
   @Output() filterChange = new EventEmitter<any[]>();
 
-  constructor(private productService : ProductServiceService){}
+  constructor(private apiService : ApiService){}
 
   criteria: SearchCriteria = { price: '', category: '' };
 
@@ -31,9 +32,9 @@ export class ProductSearchComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.productService.getProducts().subscribe(data => {
+    this.apiService.getCalague().subscribe(data =>{
       this.products = data;
-      this.filterChange.emit(this.products);
+      this.filterChange.emit(this.products)
     });
   }
 }
