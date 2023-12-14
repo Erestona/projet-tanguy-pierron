@@ -1,6 +1,7 @@
 <h1>Liste des produits</h1>
 
-<app-product-search (filterChange)="onFilterChange($event)"></app-product-search>
+<input #input name="input" placeholder="search">
+
 <table>
   <tr>
     <th> ID</th>
@@ -8,13 +9,14 @@
     <th> category</th>
     <th> Price</th>
   </tr> 
-  <tr *ngFor="let product of filteredProducts">
-    <td>{{ product.id }}</td>
-    <td>{{ product.name }}</td>
-    <td>{{ product.category }}</td>
-    <td>{{ product.price }}</td>
-    <td><button (click)="addProduct(product.id)">Ajouter au panier</button></td>
-  </tr>
-</table>
 
-  
+  <ng-container *ngIf="(searchField$ | async)?.length > 0">
+    <tr *ngFor="let product of searchField$ | async">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.price }}</td>
+      <td><button (click)="addProduct(product.id)">Ajouter au panier</button></td>
+    </tr>
+  </ng-container>
+</table>

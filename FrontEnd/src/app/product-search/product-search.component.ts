@@ -1,5 +1,5 @@
 import { Component, OnInit ,EventEmitter,Output} from '@angular/core';
-import { ProductServiceService } from 'src/product-service.service';
+import { SearchService } from 'src/product-service.service';
 import { ApiService } from '../api.service';
 
 @Component({

@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductServiceService {
+export class SearchService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
+  search(filter: string) {
+    if (filter === '') {
+      return of([]);
+    }
 
-  getProducts(): Observable<any[]> {
-    return this.http.get<any[]>('assets/product.json');
+    return this.http.get(
+      `https://webtp06.onrender.com/api/catalogue/${filter}`
+    ) /* .pipe(
+        map(response => response[1])
+      ) */;
   }
 }
