@@ -1,6 +1,6 @@
-export const environment = {
+export const environment = { 
     production: false,
-    backendLoginClient: 'https://tpweb.onrender.com/api/utilisateur/login',
-    backendCatalogue: 'https://tpweb.onrender.com/api/catalogue',
-    backendCreateClient: 'https://tpweb.onrender.com/api/utilisateur/create'
+    backendLoginClient: 'https://projetweb.onrender.com/api/utilisateur/login',
+    backendCatalogue: 'https://projetweb.onrender.com/api/catalogue',
+    backendCreateClient: 'https://projetweb.onrender.com/api/utilisateur/signup'
   };
