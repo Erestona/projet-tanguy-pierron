@@ -25,6 +25,28 @@ export class ApiService {
     );
   }
 
+  public createClient(firstname: string, lastname: string, 
+    adress: string,    postalcode: string,
+    city : string , email : string,
+    sex: string , phonenumber:string,
+    login: string , password: string )
+  {
+    let data: String;
+    let httpOptions={
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      }),
+    };
+    data = 'firstname=' + firstname + '&lastname=' + lastname + '&adress=' + adress
+    + '&postalcode=' + postalcode + '&city=' + city + '&email=' + email 
+    + '&sex=' + sex + '&phonenumber=' + phonenumber + '&login=' + login + '&password='+ password
+    return this.http.post<Client>(
+      environment.backendCreateClient,
+      data,
+      httpOptions
+    );
+  }
+
   public getCalague(): Observable<Product[]> {
     return this.http.get<Product[]>(environment.backendCatalogue);
   }

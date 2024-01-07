@@ -13,6 +13,7 @@ import { CartModule } from './cart/cart.module';
 import {NgxsModule} from '@ngxs/store';
 import {CartState} from '../shared/states/cart-state';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 import { ApiService } from './api.service';
 import { ApiHttpInterceptor } from './http-interceptor';
@@ -21,7 +22,8 @@ const appRoutes : Routes= [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path : 'shop', component : ProductListComponent},
   {path : 'cart', component : CartComponent},
-  {path: 'login', component: LoginComponent }
+  {path: 'login', component: LoginComponent },
+  {path: 'signup', component : SignupComponent }
 ];
 
 
@@ -33,7 +35,8 @@ const appRoutes : Routes= [
     ProductSearchComponent, 
     LinksComponent, 
     CartComponent, 
-    LoginComponent
+    LoginComponent,
+    SignupComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

@@ -1,0 +1,58 @@
+<h1>Sign-up</h1>
+
+<label>First Name : </label>
+<input [(ngModel)]="firstname" name="firstname" placeholder="First Name">
+
+<br> 
+
+<label>LAst Name : </label>
+<input [(ngModel)]="lastname" name="lastname" placeholder="LAst NAme">
+
+<br> 
+
+<label>Adress : </label>
+<input [(ngModel)]="adress" name="adress" placeholder="Adress">
+
+<br> 
+
+<label>Postal code : </label>
+<input [(ngModel)]="postalcode" name="postalcode" placeholder="Postal Code">
+
+<br> 
+
+<label>City : </label>
+<input [(ngModel)]="city" name="city" placeholder="City">
+
+<br> 
+
+<label>Email : </label>
+<input [(ngModel)]="email" name="email" placeholder="E@mail.com">
+
+<br> 
+
+<label>Sex: </label>
+
+<select [(ngModel)]="sex" id="sex">
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+</select>
+
+
+
+<br>
+
+<label>Phone number : </label>
+<input [(ngModel)]="phonenumber" name="phonenumber" placeholder="06 XX XX XX XX">
+
+<br> 
+
+<label>UserName : </label>
+<input [(ngModel)]="login" name="login" placeholder="Login">
+
+<br>
+
+<label>Password : </label>
+<input [(ngModel)]="password" type="password" name="password" placeholder="Password">
+    
+<button (click)="createuser()">Create user</button>
