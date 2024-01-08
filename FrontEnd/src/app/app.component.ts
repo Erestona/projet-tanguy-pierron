@@ -9,7 +9,7 @@ import { CartState } from 'src/shared/states/cart-state';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tp03';
+  title = 'ProjetWeb';
 
   @Select(CartState.getNbProducts) nb$!: Observable<number>;
   constructor() {}

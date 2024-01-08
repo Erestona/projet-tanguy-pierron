@@ -1,56 +1,55 @@
 <h1>Sign-up</h1>
 
 <label>First Name : </label>
-<input [(ngModel)]="firstname" name="firstname" placeholder="First Name">
+<input [(ngModel)]="prenom" name="prenom" placeholder="prenom" required>
 
 <br> 
 
 <label>LAst Name : </label>
-<input [(ngModel)]="lastname" name="lastname" placeholder="LAst NAme">
+<input [(ngModel)]="nom" name="nom" placeholder="nom" required>
 
 <br> 
 
 <label>Adress : </label>
-<input [(ngModel)]="adress" name="adress" placeholder="Adress">
+<input [(ngModel)]="adresse" name="adresse" placeholder="Adresse" required>
 
 <br> 
 
 <label>Postal code : </label>
-<input [(ngModel)]="postalcode" name="postalcode" placeholder="Postal Code">
+<input [(ngModel)]="codepostal" name="codepostal" placeholder="Code postal" required>
 
 <br> 
 
 <label>City : </label>
-<input [(ngModel)]="city" name="city" placeholder="City">
+<input [(ngModel)]="ville" name="ville" placeholder="ville" required>
 
 <br> 
 
 <label>Email : </label>
-<input [(ngModel)]="email" name="email" placeholder="E@mail.com">
+<input [(ngModel)]="email" name="email" placeholder="E@mail.com" required>
 
 <br> 
 
 <label>Sex: </label>
 
-<select [(ngModel)]="sex" id="sex">
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    <option value="Other">Other</option>
+<select [(ngModel)]="sex" id="sex" required>
+    <option value="M">Male</option>
+    <option value="F">Female</option>
 </select>
 
 <br>
 
 <label>Phone number : </label>
-<input [(ngModel)]="phonenumber" name="phonenumber" placeholder="06 XX XX XX XX">
+<input [(ngModel)]="telephone" name="telephone" placeholder="06 XX XX XX XX" required>
 
 <br> 
 
 <label>UserName : </label>
-<input [(ngModel)]="login" name="login" placeholder="Login">
+<input [(ngModel)]="login" name="login" placeholder="Login" required>
 
 <br>
 
 <label>Password : </label>
-<input [(ngModel)]="password" type="password" name="password" placeholder="Password">
+<input [(ngModel)]="password" type="password" name="password" placeholder="Password" required>
     
 <button (click)="createuser()">Create user</button>

@@ -8,14 +8,14 @@ import { ApiService } from '../api.service';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  firstname: string ="";
-  lastname: string ="";
-  adress: string="";
-  postalcode: string="";
-  city : string ="";
+  prenom: string ="";
+  nom: string ="";
+  adresse: string="";
+  codepostal: string="";
+  ville : string ="";
   email : string="";
-  sex: string="";
-  phonenumber:string="";
+  sexe: string="";
+  telephone:string="";
   
   login: string ="";
   password: string ="";
@@ -27,7 +27,7 @@ export class SignupComponent {
 
   createuser()
   {
-    this.apiService.createClient(this.firstname,this.lastname,this.adress,this.postalcode,this.city,this.email,this.sex,this.phonenumber,
+    this.apiService.createClient(this.prenom,this.nom,this.adresse,this.codepostal,this.ville,this.email,this.sexe,this.telephone,
       this.login,this.password).subscribe();
       //this.connexion();
   }

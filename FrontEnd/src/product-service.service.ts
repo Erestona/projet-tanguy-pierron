@@ -14,7 +14,7 @@ export class SearchService {
     }
 
     return this.http.get(
-      `https://webtp06.onrender.com/api/catalogue/${filter}`
+      `https://projectweb.onrender.com/api/catalogue/${filter}`
     ) /* .pipe(
         map(response => response[1])
       ) */;
