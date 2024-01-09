@@ -25,10 +25,10 @@ export class ApiService {
     );
   }
 
-  public createClient(firstname: string, lastname: string, 
-    adress: string,    postalcode: string,
-    city : string , email : string,
-    sex: string , phonenumber:string,
+  public createClient(prenom: string, nom: string, 
+    adresse: string,    codepostal: string,
+    ville : string , email : string,
+    sexe: string , telephone:string,
     login: string , password: string )
   {
     let data: String;
@@ -37,9 +37,9 @@ export class ApiService {
         'Content-Type': 'application/x-www-form-urlencoded',
       }),
     };
-    data = 'firstname=' + firstname + '&lastname=' + lastname + '&adress=' + adress
-    + '&postalcode=' + postalcode + '&city=' + city + '&email=' + email 
-    + '&sex=' + sex + '&phonenumber=' + phonenumber + '&login=' + login + '&password='+ password
+    data = 'prenom=' + prenom + '&nom=' + nom + '&adresse=' + adresse
+    + '&codepostal=' + codepostal + '&ville=' + ville + '&email=' + email 
+    + '&sexe=' + sexe + '&telephone=' + telephone + '&login=' + login + '&password='+ password
     return this.http.post<Client>(
       environment.backendCreateClient,
       data,

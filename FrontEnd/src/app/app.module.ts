@@ -17,9 +17,11 @@ import { SignupComponent } from './signup/signup.component';
 
 import { ApiService } from './api.service';
 import { ApiHttpInterceptor } from './http-interceptor';
+import { FrontpageComponent } from './frontpage/frontpage.component';
 
 const appRoutes : Routes= [
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '', redirectTo: '/frontpage', pathMatch: 'full'},
+  {path: 'frontpage', component : FrontpageComponent},
   {path : 'shop', component : ProductListComponent},
   {path : 'cart', component : CartComponent},
   {path: 'login', component: LoginComponent },
@@ -36,7 +38,8 @@ const appRoutes : Routes= [
     LinksComponent, 
     CartComponent, 
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    FrontpageComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
