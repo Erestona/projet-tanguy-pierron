@@ -1,6 +1,7 @@
 <a [routerLink]="['/frontpage']">Accueil</a>-
 <a [routerLink]="['/shop']">Catalogue </a> -
 <a [routerLink]="['/cart']">Panier </a> -
-<a [routerLink]="['/login']">Login</a> -
-<a [routerLink]="['/signup']">SignUp</a>
+    
+<a *ngIf="getCnx()" [routerLink]="['/login']">Login</a> -
+<a *ngIf="getCnx()" [routerLink]="['/signup']">SignUp</a>
 <br />

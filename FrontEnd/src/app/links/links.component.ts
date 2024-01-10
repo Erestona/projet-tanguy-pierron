@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ConnectionService } from '../connection.service';
 
 @Component({
   selector: 'app-links',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class LinksComponent {
 
+  constructor(private connectionService :ConnectionService)
+  {
+
+  }
+
+   public getCnx() 
+   {
+    return this.connectionService.getCnx();
+   }
 }

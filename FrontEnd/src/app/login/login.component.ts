@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../api.service';
+import { ConnectionService } from '../connection.service';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +13,9 @@ export class LoginComponent {
   isConnected : boolean =false;
   name: string = '';
   surname: string = '';
-  constructor(private apiService: ApiService){}
+  constructor(private apiService: ApiService , private connectionService :ConnectionService){}
 
+  
   connexion(){
     this.apiService.loginClient(this.login,this.password).subscribe
     (
@@ -25,5 +27,7 @@ export class LoginComponent {
 
       }     
     );
+
+    this.connectionService.setCnx(true);
   }
 }
