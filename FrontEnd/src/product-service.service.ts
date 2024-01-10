@@ -8,15 +8,4 @@ import { Observable, of } from 'rxjs';
 export class SearchService {
   constructor(private http: HttpClient) {}
 
-  search(filter: string) {
-    if (filter === '') {
-      return of([]);
-    }
-
-    return this.http.get(
-      `https://projetweb.onrender.com/api/catalogue/${filter}`
-    ) /* .pipe(
-        map(response => response[1])
-      ) */;
-  }
 }

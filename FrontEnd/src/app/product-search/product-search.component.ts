@@ -32,7 +32,7 @@ export class ProductSearchComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.apiService.getCalague().subscribe(data =>{
+    this.apiService.getCatalogue().subscribe(data =>{
       this.products = data;
       this.filterChange.emit(this.products)
     });

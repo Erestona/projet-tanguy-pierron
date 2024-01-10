@@ -10,13 +10,25 @@
     <th> Price</th>
   </tr> 
 
-  <ng-container *ngIf="(searchField$ | async)?.length > 0">
+  <ng-container *ngIf="(searchField$ | async)?.length > 0;else templateName">
     <tr *ngFor="let product of searchField$ | async">
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
       <td>{{ product.category }}</td>
       <td>{{ product.price }}</td>
-      <td><button (click)="addProduct(product.id)">Ajouter au panier</button></td>
+      <td><button (click)="addSearchProduct(product.id)">Ajouter au panier</button></td>
     </tr>
   </ng-container>
+
+  <ng-template #templateName>
+    <ng-container >
+      <tr *ngFor="let product of products$ | async">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.price }}</td>
+        <td><button (click)="addProduct(product.id)">Ajouter au panier</button></td>
+      </tr>
+    </ng-container>
+  </ng-template>
 </table>

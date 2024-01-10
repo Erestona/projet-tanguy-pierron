@@ -21,29 +21,47 @@ import { SearchService } from 'src/product-service.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements AfterViewInit {
+export class ProductListComponent implements OnInit {
 
-  constructor(private store : Store , private productService : SearchService){}
+  constructor(private store : Store , private productService : ApiService)
+  {
+    this.products$ = this.productService.getCatalogue();
+  }
 
   
-  filteredProducts: Product[]  = [];
-
+  
+  /*
   onFilterChange(filteredProducts: Product[]) {
     this.filteredProducts = filteredProducts;
     console.log(this.filteredProducts);
   }
-  
-  ngOnInit(){}
+  */
 
   addProduct(id : string) {
     console.log(id);
-    this.filteredProducts.forEach((product : Product)=>
+    this.products$.subscribe((products : Product[])=>
     {
-      if (product.id == id )
+      products.forEach((product : Product)=>
       {
-        this.store.dispatch(new AddProduct(product));
-        
-      }
+        if (product.id == id )
+        {
+          this.store.dispatch(new AddProduct(product));
+        }
+      });
+    });
+ }
+
+  addSearchProduct(id : string) {
+    console.log(id);
+    this.products$.subscribe((products : Product[])=>
+    {
+      products.forEach((product : Product)=>
+      {
+        if (product.id == id )
+        {
+          this.store.dispatch(new AddProduct(product));
+        }
+      });
     });
   }
 
@@ -52,27 +70,37 @@ export class ProductListComponent implements AfterViewInit {
   searchField$!: Observable<any>;
   @ViewChild('input', { static: true }) input!: ElementRef;
   
-  products : any[] = [];
+  products$! : Observable<Product[]>;
   @Output() searchEvent = new EventEmitter<string>();
 
+  filteredProducts$!: Observable<Product[]>;
 
-  ngAfterViewInit() {
-    this.searchField$ = fromEvent(this.input.nativeElement, `keyup`).pipe(
-      map((event : any) => event.target.value),
-      debounceTime(300),
-      distinctUntilChanged(),
 
-      switchMap((term) =>
-        this.productService.search(term).pipe(
-          catchError(() => {
-            return of([]);
-          })
+  ngOnInit() {
+    if (this.input){
+    
+      this.searchField$ = fromEvent(this.input.nativeElement, `keyup`).pipe(
+        map((event : any) => event.target.value),
+        debounceTime(300),
+        distinctUntilChanged(),
+
+        switchMap((term) =>
+          this.productService.search(term).pipe(
+            catchError(() => {
+              return of([]);
+            })
+          )
         )
-      )
-    );
-    this.searchField$.subscribe((term)=>
-    {
-      this.searchEvent.emit(term);
-    })
+      );
+      /*
+      this.searchField$.subscribe((term)=>
+      {
+        this.searchEvent.emit(term);
+      })
+      */
+      this.filteredProducts$ = this.searchField$;
+    } else{
+      this.products$ = this.productService.getCatalogue();
+    }
   }
 }

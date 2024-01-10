@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { of } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Client } from '../shared/models/client';
 import { Product } from '../shared/models/product';
@@ -23,6 +23,18 @@ export class ApiService {
       data,
       httpOptions
     );
+  }
+  
+  public search(filter: string) {
+    if (filter === '') {
+      return of([]);
+    }
+
+    return this.http.get(
+      `https://projetweb.onrender.com/api/catalogue/${filter}`
+    ) /* .pipe(
+        map(response => response[1])
+      ) */;
   }
 
   public createClient(prenom: string, nom: string, 
@@ -47,7 +59,7 @@ export class ApiService {
     );
   }
 
-  public getCalague(): Observable<Product[]> {
+  public getCatalogue(): Observable<Product[]> {
     return this.http.get<Product[]>(environment.backendCatalogue);
   }
 }
