@@ -30,11 +30,18 @@ export class ApiService {
       return of([]);
     }
 
-    return this.http.get(
-      `https://projetweb.onrender.com/api/catalogue/${filter}`
-    ) /* .pipe(
+    return this.http.get(environment.backendGetClient +`/${filter}`) /* .pipe(
         map(response => response[1])
       ) */;
+  }
+
+  public getClient(login : string)
+  {
+    if (login === '') {
+      return new Observable<Client>;
+    }
+
+    return this.http.get<Client>(environment.backendGetClient + `/${login}`)
   }
 
   public createClient(prenom: string, nom: string, 

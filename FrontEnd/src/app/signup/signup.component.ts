@@ -37,8 +37,8 @@ export class SignupComponent {
     (
       (c)=>
       {
-        this.name = c.name;
-        this.surname = c.surname;
+        this.name = c.nom;
+        this.surname = c.prenom;
         this.isConnected = true;
 
       }     

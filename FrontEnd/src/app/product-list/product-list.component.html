@@ -10,7 +10,7 @@
     <th> Price</th>
   </tr> 
 
-  <ng-container *ngIf="(searchField$ | async)?.length > 0;else templateName">
+  <ng-container *ngIf="(searchField$ | async)?.length > 0;else defaultTable">
     <tr *ngFor="let product of searchField$ | async">
       <td>{{ product.id }}</td>
       <td>{{ product.name }}</td>
@@ -20,7 +20,7 @@
     </tr>
   </ng-container>
 
-  <ng-template #templateName>
+  <ng-template #defaultTable>
     <ng-container >
       <tr *ngFor="let product of products$ | async">
         <td>{{ product.id }}</td>

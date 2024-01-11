@@ -8,11 +8,12 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { connexionService } from 'src/connexion.service';
 
 @Injectable()
 export class ApiHttpInterceptor implements HttpInterceptor {
   jwtToken: String = '';
-  constructor() {}
+  constructor(private connexionService: connexionService) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -35,6 +36,7 @@ export class ApiHttpInterceptor implements HttpInterceptor {
             if (tab.length > 1) {
               this.jwtToken = tab[1];
               console.log('Bearer récupéré : ' + this.jwtToken);
+              this.connexionService.isLogged.emit(true);
             }
           }
         }
